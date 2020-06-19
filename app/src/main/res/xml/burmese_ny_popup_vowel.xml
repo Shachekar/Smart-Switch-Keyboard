@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="10%p"
+    android:horizontalGap="5dp"
+    android:verticalGap="0px"
+    android:keyHeight="50sp"
+    >
+
+    <Row>
+        <Key android:keyLabel="ည်" android:keyOutputText="\u100A\u103A" />
+        <Key android:keyLabel="\u1009\u103A " android:keyOutputText="\u1009\u103A" />
+        <Key android:keyLabel="\u1009\u1039" android:keyOutputText="\u1009\u1039" />
+    </Row>
+</Keyboard>

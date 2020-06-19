@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="11%p"
+    android:horizontalGap="0px"
+    android:verticalGap="0dp"
+    android:keyHeight="50dp">
+    <Row>
+        <Key android:keyLabel="ū" android:keyOutputText="ū" android:keyWidth="12.5%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="wh" android:keyOutputText="wh" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="u" android:keyOutputText="u" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="e" android:keyOutputText="e" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="t" android:keyOutputText="t" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="h" android:keyOutputText="h" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="ē" android:keyOutputText="ē" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="XYZ" android:keyOutputText="" android:keyWidth="12.5%p" android:keyEdgeFlags="right" />
+    </Row>
+    <Row>
+        <Key android:keyLabel="ō" android:keyOutputText="ō" android:keyWidth="12.5%p" android:keyEdgeFlags="left" />
+        <Key android:keyLabel="ā" android:keyOutputText="ā" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="k" android:keyOutputText="k" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="a" android:keyOutputText="a" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="r" android:keyOutputText="r" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="m" android:keyOutputText="m" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="p" android:keyOutputText="p" android:keyWidth="12.5%p" android:keyEdgeFlags="right" />
+    </Row>
+    <Row>
+        <Key android:codes="-1" android:keyLabel="^"
+        android:isModifier="true"
+        android:isSticky="true" android:keyEdgeFlags="left" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="w" android:keyOutputText="w" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="n" android:keyOutputText="n" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="i" android:keyOutputText="i" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="o" android:keyOutputText="o" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="ng" android:keyOutputText="ng" android:keyWidth="12.5%p" />
+        <Key android:keyLabel="ī" android:keyOutputText="ī" android:keyWidth="12.5%p" />
+        <Key android:keyIcon="@drawable/del" android:codes="-5" android:keyWidth="12.5%p" android:keyEdgeFlags="right"
+            android:isRepeatable="true"/>
+    </Row>
+    <Row>
+        <Key android:codes="521" android:keyIcon="@drawable/globe" android:keyWidth="14%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="502" android:keyIcon="@drawable/numbers" android:keyWidth="14%p"  />
+
+        <Key android:keyLabel="Māori" android:codes="32" android:keyWidth="45%p" />
+
+        <Key android:keyLabel=",.?" android:popupCharacters=", . ? ! : ; ' \" android:keyWidth="10%p" /> <!-- fix missing " where escape \" did not work -->
+
+        <Key android:keyLabel="" android:codes="-11"  android:isRepeatable="true" android:keyIcon="@drawable/enter"
+             android:keyWidth="17%p" android:keyEdgeFlags="right" />
+    </Row>
+
+</Keyboard>

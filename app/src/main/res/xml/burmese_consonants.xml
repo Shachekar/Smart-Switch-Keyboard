@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:andriod="http://schemas.android.com/apk/res-auto"
+    android:keyWidth="11.0%p"
+    android:horizontalGap="0px"
+    android:verticalGap="0dp"
+    android:keyHeight="50dp" >
+
+    <Row>
+        <Key android:keyLabel="ရ" android:keyOutputText="\u101B" />
+        <Key android:keyLabel="ခ" android:keyOutputText="\u1001"/>
+        <Key android:keyLabel="က" android:keyOutputText="\u1000"/>
+        <Key android:keyLabel="င" android:keyOutputText="\u1004"/> <!-- ng -->
+        <Key android:keyLabel="ဘ" android:keyOutputText="\u1018"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1017 \u1018" />
+        <Key android:keyLabel="စ" android:keyOutputText="\u1005"/>
+        <Key android:keyLabel="ဆ" android:keyOutputText="\u1006"/>
+        <Key android:keyLabel="ဇ" android:keyOutputText="\u1007"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1007 \u1008" />
+        <Key android:codes="-5" android:keyIcon="@drawable/del" android:isRepeatable="true" android:keyEdgeFlags="right"/>
+
+    </Row>
+    <Row>
+        <Key android:keyLabel="ယ" android:keyOutputText="\u101A" />
+        <Key android:keyLabel="ဖ" android:keyOutputText="\u1016" />
+        <Key android:keyLabel="ပ" android:keyOutputText="\u1015" />
+        <Key android:keyLabel="မ" android:keyOutputText="\u1019" />
+        <Key android:keyLabel="သ" android:keyOutputText="\u101E"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u101E \u103F" />
+
+	<Key android:keyLabel="တ" android:keyOutputText="\u1010"
+        android:popupKeyboard="@xml/keyboard_popup_template"
+        android:popupCharacters="\u1010 \u100B" />
+
+        <Key android:keyLabel="ထ" android:keyOutputText="\u1011"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1011 \u100C" />
+
+        <Key android:keyLabel="ဒ" android:keyOutputText="\u1012"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1012 \u1013 \u100D \u100E" />
+
+        <Key android:keyLabel="့" android:keyOutputText="\u1037" />
+    </Row>
+    <Row>
+        <Key android:keyLabel="ဝ" android:keyOutputText="\u101D" />
+        <Key android:keyLabel="ည" android:keyOutputText="\u100A"
+            android:popupKeyboard="@xml/burmese_ny_popup" />
+<!-- two behave like vowels? -->
+
+        <Key android:keyLabel="န" android:keyOutputText="\u1014"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1014 \u100F" />
+
+        <Key android:keyLabel="လ" android:keyOutputText="\u101C"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u101C \u1020" />
+
+        <Key android:keyLabel="ဟ" android:keyOutputText="\u101F" />
+        <Key android:keyLabel="အ" android:keyOutputText="\u1021"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1021 \u1027 \u1023 \u1024 \u1025 \u1026 \u1029 \u102A"  />
+
+        <Key android:keyLabel="ဂ" android:keyOutputText="\u1002"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1002 \u1003" />
+        <Key android:keyLabel="ံ" android:keyOutputText="\u1036" />
+        <Key android:keyLabel="း" android:keyOutputText="\u1038" />
+    </Row>
+
+
+    <Row android:rowEdgeFlags="bottom" android:horizontalGap="0dp">
+        <Key android:codes="521" android:keyIcon="@drawable/globe" android:keyWidth="14%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="502" android:keyIcon="@drawable/numbers" android:keyWidth="14%p"/>
+        <Key android:codes="32" android:keyIcon="@drawable/space" android:keyWidth="45%p" />
+        <Key android:codes="506" android:keyLabel="S" android:keyWidth="10%p" />
+        <Key android:codes="-4" android:keyIcon="@drawable/enter" android:keyWidth="17%p" android:keyEdgeFlags="right"/>
+    </Row>
+
+
+</Keyboard>
