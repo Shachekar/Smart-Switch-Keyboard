@@ -18,9 +18,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //main view with instructions
         final TextView button = (TextView) findViewById(R.id.text_view_id);
 
+        //make more stuff here like settings
     }
 
 

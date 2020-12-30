@@ -7,8 +7,6 @@
     >
 
     <Row>
-        <Key android:keyLabel="ည်" android:keyOutputText="\u100A\u103A" />
-        <Key android:keyLabel="\u1009\u103A " android:keyOutputText="\u1009\u103A" />
-        <Key android:keyLabel="\u1009\u1039" android:keyOutputText="\u1009\u1039" />
+        <Key android:keyLabel="\u102B" android:keyOutputText="\u102B" />
     </Row>
 </Keyboard>

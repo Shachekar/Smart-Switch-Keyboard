@@ -12,6 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 
 import java.security.Key;
 
+
+
+//this module should primarily include the use of the keyboard functions and passing them to the respective language controller
+//it should rarely be edited once the languages are abstracted out
 public class MyKeyboard extends InputMethodService
             implements KeyboardView.OnKeyboardActionListener{
 
@@ -27,12 +31,17 @@ public class MyKeyboard extends InputMethodService
     private Language defaultLanguage;
     private Language currentLanguage;
     private boolean caps = false;
-    private boolean vowel = false;
+
 
     //burmese special logic handling
+    private boolean vowel = false;
     private char longAChar = 0;
+    private char bottomChar = 0;
     private boolean isNg = false;
-    private boolean isW = false;
+    private CharSequence hCharSeq = "";
+    private boolean isLongAStacking = false;
+    private boolean isStacking = false;
+    private boolean isNgStack = false;
 
     //add each language here
     enum Language {
@@ -48,6 +57,8 @@ public class MyKeyboard extends InputMethodService
         //default language gets initialised to burmese upon initialisation
         currentLanguage = Language.maori;
         changeLanguage();
+
+        //TODO: set default here
 
 
         kv.setPreviewEnabled(false);
@@ -65,6 +76,7 @@ public class MyKeyboard extends InputMethodService
             currentLanguage = Language.maori;
 
         switch (currentLanguage) {
+
             case burmese:
                 keyboardNumbers = new Keyboard(this, R.xml.burmese_numbers);
                 keyboardSpecial = new Keyboard(this, R.xml.burmese_vowels);
@@ -99,6 +111,8 @@ public class MyKeyboard extends InputMethodService
                 ic.deleteSurroundingText(1, 0);
                 if (currentLanguage == Language.burmese)
                     myKeyboardSwap("bs");
+                //put a whole bunch of code in here to reset values like longAChar etc.
+                //it is acceptable to go back to about 8 characters (one syllable)
                 break;
             case Keyboard.KEYCODE_SHIFT:
                 caps = !caps;
@@ -141,10 +155,15 @@ public class MyKeyboard extends InputMethodService
                 }
                 else {
                     //weird characters like from popup keyboard
-                    CharSequence text = String.valueOf(code);
+                    CharSequence text;
+                    CharacterProcessingReturnType thisReturn;
                     db.getInstance(getApplicationContext()).insertData_words(String.valueOf(code));
-                    if (currentLanguage == Language.burmese)
-                        text = myProcessing(String.valueOf(code));
+                    if (currentLanguage == Language.burmese) {
+                        thisReturn = myProcessing(String.valueOf(code));
+                        text = thisReturn.text;
+                    }
+                    else
+                        text = String.valueOf(code);
                     ic.commitText(text, 1);
                     if (primaryCode == 32)
                         myKeyboardSwap("sp");
@@ -172,11 +191,22 @@ public class MyKeyboard extends InputMethodService
     //this is called for buttons that have android:keyOutputText
     public void onText(CharSequence text) {
         InputConnection ic = getCurrentInputConnection();
+        CharacterProcessingReturnType thisReturn;
+        CharSequence processedText;
+        int toDelete = 0;
 
-        if (currentLanguage == Language.burmese)
-            text = myProcessing(text);
+        //the return type has the processed text (defaults to unprocessed where needed) and the number of characters that should be deleted (default 0)
+        if (currentLanguage == Language.burmese) {
+            thisReturn = myProcessing(text);
+            processedText = thisReturn.text;
+            toDelete = thisReturn.numToDelete;
+        }
+        else
+            processedText = text;
 
-        ic.commitText(text,0);
+        //delete and replace text
+        ic.deleteSurroundingText(toDelete,0);
+        ic.commitText(processedText,0);
 
         if (currentLanguage == Language.burmese) {
                 myKeyboardSwap(text);
@@ -184,47 +214,113 @@ public class MyKeyboard extends InputMethodService
 
     }
 
+
+
     //push as much Burmese logic down here, or yeet into a separate class a later date
-    public CharSequence myProcessing(CharSequence text) {
+    public CharacterProcessingReturnType myProcessing(CharSequence text) {
         InputConnection ic = getCurrentInputConnection();
+        CharacterProcessingReturnType returnValue;
+        int numToDelete = 0;
+        //turn off flags if required
 
-        //process possible characters so flag doesn't get sucked up immediately
-
-        //turn off long A for stacking character or W
-        if (text.equals("\u1039") || text.equals("\u103E"))
+        //turn off long A if on the vowel page after stacking (this should not be triggered until after second consonant of stack), does not trigger for long a top character of stack
+        if (isStacking && vowel && !isLongAStacking) {
+            longAChar = 0;
+            isStacking = false;
+        }
+        //turn off long A for W
+        if (text.charAt(0) == '\u103D')
             longAChar = 0;
 
-        //process long A if a long A triggering character was pressed earlier
-        if (longAChar != 0 && vowel) {
-            if (text.equals("\u102C"))
-                text = "\u102B";
-            else if (text.equals("\u1031\u102C"))
-                text = "\u1031\u102B";
-
-                //ွာ is always ွာ
-                // else if (text.equals("\u103D\u102C"))
-                //    text = "\u103D\u102B";
-            else if (text.equals("\u1031\u102C\u103A"))
-                text = "\u1031\u102B\u103A";
-            longAChar = 0;
+        //stacking character for what should be long A, catches this before regular long A
+        if (longAChar != 0  && text.equals("\u1039")) {
+            isLongAStacking = true;
+            isStacking = false;
         }
 
 
+        //process long A for a stack if a long A triggering character was pressed earlier before the more recent (bottom) consonant
+        else if (isLongAStacking) {
+            //make sure ng does not trigger a long A when it is stacked
+            if (longAChar == 'င') {
+                isLongAStacking = false;
 
-            //stacking character for ng
+                //for an ng stack, the long A character of the stack is the current character
+                if (myIsLongAChar(text.charAt(0)))
+                    longAChar = text.charAt(0);
+                else
+                    longAChar = 0;
+
+                //clear the flags
+                bottomChar = 0;
+                longAChar = 0;
+            }
+
+            //stack where the top character (typed first) should trigger a long A
+            else if (text.toString().contains("\u102C") && bottomChar != 0) {
+                //ensure long A for the back text
+                text = longAChar + "\u1039" + bottomChar + replaceLongA(text);;
+
+                //ic.deleteSurroundingText(3, 0);
+                numToDelete = 3;
+                isLongAStacking = false;
+                longAChar = 0;
+                bottomChar = 0;
+            }
+
+            //capture the text at the bottom of the stack to rebuild later
+            else if (bottomChar == 0)
+                bottomChar = text.charAt(0);
+
+            //reset if none of the key considerations are met
+            else {
+                isLongAStacking = false;
+                bottomChar = 0;
+                longAChar = 0;
+            }
+        }
+
+        //make into a process longA routine?
+        //this is the default long a replacement routine with no stacking etc.
+        if (longAChar != 0 && vowel && !isLongAStacking && !isStacking) {
+                text = replaceLongA(text);
+            longAChar = 0;
+        }
+
+        //stacking character for ng, incoroporated into
         if (isNg) {
-            if (text.equals("\u1039"))
-                text = "\u1039\u103A";
+            if (text.equals("\u1039")) {
+                text = "\u103A\u1039";
+                isNgStack = true;
+            }
             isNg = false;
         }
-            //swap order wh
-        if (isW) {
-            if (text.equals("\u103D")) {
-                //delete a character
-                ic.deleteSurroundingText(1, 0);
-                text = "\u103D\u103E";
-                isW = false;
+        //swap order wh
+        if (hCharSeq.length() > 0) {
+            //w is always the first character in a W key press regardless of length
+            if (text.charAt(0) == '\u103D') {
+
+                //delete the number of characters in the hString
+                //ic.deleteSurroundingText(hCharSeq.length(), 0);
+                numToDelete = hCharSeq.length();
+                CharSequence charactersAfterW;
+                CharSequence charactersBeforeH;
+
+                if (text.length() >= 3)
+                    charactersAfterW = text.subSequence(1,text.length()-1);
+                else if (text.length() == 2)
+                    charactersAfterW = Character.toString(text.charAt(1));
+                else //w only, no others
+                    charactersAfterW = "";
+
+                if (hCharSeq.length() == 2)
+                    charactersBeforeH = Character.toString(hCharSeq.charAt(0));
+                else //h only, no others
+                    charactersBeforeH = "";
+
+                text = charactersBeforeH + "\u103D" + "\u103E" + charactersAfterW;
             }
+            hCharSeq = "";
         }
 
         if (text.length() == 1) {
@@ -235,17 +331,35 @@ public class MyKeyboard extends InputMethodService
             if (text.charAt(0) == '\u1004') {
                 isNg = true;
             }
-
-            //catch W
-            if (text.charAt(0) == '\u103E')
-                isW = true;
+            //catch general stacking
+            if (text.charAt(0) == '\u1039' && !isLongAStacking) {
+                isStacking = true;
+            }
         }
 
+        //H is always the last character in a sequence that contains H, save the characters for rebuilding in inverted W H sequence
+        if (text.charAt(text.length()-1) == '\u103E')
+                hCharSeq = text;
 
+        returnValue = new CharacterProcessingReturnType(text, numToDelete);
+
+        return returnValue;
+    }
+
+    public CharSequence replaceLongA(CharSequence text) {
+        if (text.equals("\u102C"))
+            text = "\u102B";
+        else if (text.equals("\u1031\u102C"))
+            text = "\u1031\u102B";
+
+            //ွာ is generally preferred as  ွာ
+            // else if (text.equals("\u103D\u102C"))
+            //    text = "\u103D\u102B";
+        else if (text.equals("\u1031\u102C\u103A"))
+            text = "\u1031\u102B\u103A";
 
         return text;
     }
-
 
     public boolean myIsLongAChar(char code) {
         String longAChars = "ခဂငဎဒဓပဝ";
@@ -253,7 +367,7 @@ public class MyKeyboard extends InputMethodService
     }
 
     public boolean mySpecialSymbols(CharSequence text) {
-        String specialChars = "\u1021\u1027\u1023\u1024\u1025\u1026\u1029\u102A";
+        String specialChars = "\u1021\u1027\u1023\u1024\u1025\u1026\u1029\u102A\u1009\u102C\u1009\u1039";
         return specialChars.contains(String.valueOf(text));
     }
 
@@ -272,7 +386,7 @@ public class MyKeyboard extends InputMethodService
 
         //change the vowel status to what it should be post typing
 
-        if ((myToneMarkers(text) && vowel) || mySpecialSymbols(text))
+        if ((myToneMarkers(text) && !vowel) || mySpecialSymbols(text))
             vowel = false;
         else if (text.equals("bs"))
             vowel = !vowel;
@@ -357,14 +471,5 @@ public class MyKeyboard extends InputMethodService
         }
     }
 
-    //1) the ng+stack needs a rework, so \u1004 + \u1039 → \u1004 + \u103A\u1039, GR: code I think is correct but not working as expected
-    //2) w and h still need to be inverted, GR: I think this is working, not sure what success looks like
-    //3) finals located on the consonant page should not trigger the vowel page, GR: I think this works, may need to confirm what the finals are
-    //4) backspace needs to be made repeatable, GR: it is, just doens't appear to work as intended
-    //5) related: if you type a 2 code-point vowel, deleting it takes 2 backspaces, which means we'll be on the wrong page, so that's a thing
-    // GR: really unsure how to fix this, but it is easy to navigate back to consonants if stuck?
-    //6) also the special vowel symbols on the အ key should not move to the vowel page either, stupid code didn't handle this before, GR: doesn't now
-    //7) a-rasing being turned off and, also a-raising even in stacking syllables, possibly the same, GR: fixed
-    //8) when we press the ှ key, it should turn off the a-raising state, GR: fixed
 
 }

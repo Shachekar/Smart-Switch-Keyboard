@@ -11,7 +11,7 @@ import android.widget.PopupWindow;
  * Created by Asad Mahmood on 6/25/2016.
  */
 public class myKeyboardView extends KeyboardView {
-
+//this should not need much ediiting
     DatabaseHelper db;
     myKeyboardView mMiniKeyboard;
     private View mMiniKeyboardContainer;

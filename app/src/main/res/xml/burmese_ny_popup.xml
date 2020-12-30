@@ -7,8 +7,11 @@
     >
 
     <Row>
-        <Key android:keyLabel="\u100A " android:keyOutputText="\u100A" />
-        <Key android:keyLabel="\u1009\u103A " android:keyOutputText="\u1009\u103A" />
+        <Key android:keyLabel="\u100A" android:keyOutputText="\u100A" />
+        <Key android:keyLabel="\u1009\u102C" android:keyOutputText="\u1009\u102C" />
         <Key android:keyLabel="\u1009\u1039" android:keyOutputText="\u1009\u1039" />
+        <Key android:keyLabel="\u1009\u103A" android:keyOutputText="\u1009\u103A" />
+        <Key android:keyLabel="\u1009\u103A\u1037" android:keyOutputText="\u1009\u103A\u1037" />
+        <Key android:keyLabel="\u1009\u103A\u1038" android:keyOutputText="\u1009\u103A\u1038" />
     </Row>
 </Keyboard>
