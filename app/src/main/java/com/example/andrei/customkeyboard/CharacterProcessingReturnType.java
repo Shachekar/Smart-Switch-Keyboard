@@ -10,4 +10,5 @@ public class CharacterProcessingReturnType {
             text = t;
             numToDelete = dNum;
         }
+
 }

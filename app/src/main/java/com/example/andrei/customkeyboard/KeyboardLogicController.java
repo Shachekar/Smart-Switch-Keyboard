@@ -1,18 +1,49 @@
 package com.example.andrei.customkeyboard;
 
-import android.inputmethodservice.Keyboard;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
-
 
 public abstract class KeyboardLogicController {
 
     //might not need
-    private Keyboard defaultKeyboard;
-    public Keyboard currentKeyboard;
-    public CharacterProcessingReturnType returnType;
+    //private Keyboard defaultKeyboard;
 
-    public void handleBackspace() {
+    Integer nextKeyboardNum;
+    CharacterProcessingReturnType nextTextOutput;
+    String[] keyboardNames;
+    Integer numToBackspace;
+
+
+    // the following do not need to be edited, they work the same for all languages
+    public Integer getNumberOfKeyboards() {
+        return keyboardNames.length;
+
+    }
+
+    public String getKeyboardNameOfIndex(Integer index) {
+        return keyboardNames[index];
+    }
+
+
+    public CharacterProcessingReturnType processText(CharSequence text) {
+
+        processNextTextOutput(text);
+
+        return nextTextOutput;
+    }
+
+    public Integer getKeyboardIndex() /*return type keyboard? or just string for name */ {
+        //change to next keyboard should only be called by the logic controller when needed
+        //changeToNextKeyboard(text);
+        return nextKeyboardNum;
+    }
+
+    public Integer handleBackspace() {
+
+        processBackspace();
+        return numToBackspace;
+    }
+
+    //edit these three to suit the particular button presses for these languages
+    public void processBackspace() {
 
     }
 
@@ -24,16 +55,21 @@ public abstract class KeyboardLogicController {
 
     }
 
-    public CharacterProcessingReturnType processText() {
 
-        return returnType;
-    }
-
-    public void getNextKeyboard() /*return type keyboard? or just string for name */ {
+    //for internal use only, these are edited to modify local variables nextKeyboardNum and nextTextOutput
+    public void changeToNextKeyboard(CharSequence text) {
 
     }
 
+    public void processNextTextOutput(CharSequence text) {
 
+    }
 
+    public abstract void toDefaultKeyboard();
 
+    public abstract void toSpecialKeyboard1();
+
+    public abstract void toSpecialKeyboard2();
+
+    public abstract void toNumKeyboard();
 }

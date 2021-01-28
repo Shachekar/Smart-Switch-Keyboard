@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: net.evendanan.anysoftkeyboard:api:1.2.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6936f055832f708faad89ee095577d36/api-1.2.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6936f055832f708faad89ee095577d36/api-1.2.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6936f055832f708faad89ee095577d36/api-1.2.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.evendanan.anysoftkeyboard/api/1.2.3/276f22c740b0fa212a41a07d60603cc535c659c2/api-1.2.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.evendanan.anysoftkeyboard/api/1.2.3/28c2cab436637f3184c1ba2babc0aab170a23bed/api-1.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
