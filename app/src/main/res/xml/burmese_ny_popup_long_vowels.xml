@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="33.33%p"
+    android:horizontalGap="5dp"
+    android:verticalGap="0px"
+    android:keyHeight="50sp">
+    <Row>
+        <Key android:keyLabel="ဥ" android:keyOutputText="\u1025" /> <!-- DNS -->
+        <Key android:keyLabel="ဦ" android:keyOutputText="\u1026" /> <!-- DNS -->
+        <Key android:keyLabel="ဦး" android:keyOutputText="\u1026\u1038" /> <!-- DNS -->
+    </Row>
+    <Row>
+        <Key android:keyLabel="ဧ" android:keyOutputText="\u1027" /> <!-- DNS -->
+        <Key android:keyLabel="ဣ" android:keyOutputText="\u1023" /> <!-- DNS -->
+        <Key android:keyLabel="ဩ" android:keyOutputText="\1029" /> <!-- DNS -->
+    </Row>
+    <Row>
+        <Key android:keyLabel="ဧည့်" android:keyOutputText="\u1027\100A\u103A\u1037" /> <!-- DNS -->
+        <Key android:keyLabel="ဤ" android:keyOutputText="\u1024" /> <!-- DNS -->
+        <Key android:keyLabel="ဪ" android:keyOutputText="\u102A" /> <!-- DNS -->
+    </Row>
+</Keyboard>

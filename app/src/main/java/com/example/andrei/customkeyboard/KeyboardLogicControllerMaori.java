@@ -23,11 +23,11 @@ public class KeyboardLogicControllerMaori extends KeyboardLogicController {
 
     }
 
-    public void toSpecialKeyboard1() {
+    public void toSpecialKeyboard() {
         nextKeyboardNum = 3;
     }
 
-    public void toSpecialKeyboard2() {
+    public void toExtraKeyboard() {
         ;
     }
 

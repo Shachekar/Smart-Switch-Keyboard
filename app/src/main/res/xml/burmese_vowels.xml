@@ -1,50 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:andriod="http://schemas.android.com/apk/res-auto"
-    android:keyWidth="11%p"
+    android:keyWidth="14.28%p"
     android:horizontalGap="0px"
     android:verticalGap="0dp"
-    android:keyHeight="50dp">
-        <Row>
-            <Key android:keyLabel="ြှ" android:keyOutputText="\u103C\u103E" android:keyEdgeFlags="left"/>
-            <Key android:keyLabel="ြ" android:keyOutputText="\u103C" />
-            <Key android:keyLabel="ိ" android:keyOutputText="\u102D" />
-            <Key android:keyLabel="ီ" android:keyOutputText="\u102E" />
-            <Key android:keyLabel="ု" android:keyOutputText="\u102F" />
-            <Key android:keyLabel="ူ" android:keyOutputText="\u1030" />
-            <Key android:keyLabel="ည်" android:keyOutputText="\u100A\u103A"
-                 android:popupKeyboard="@xml/burmese_ny_popup_vowel" />
-            <Key android:keyLabel="ယ်" android:keyOutputText="\u101A\u103A" />
-            <Key android:codes="-5" android:keyIcon="@drawable/del" android:isRepeatable="true" android:keyEdgeFlags="right"/>
-        </Row>
-        <Row>
-            <Key android:keyLabel="ျှ" android:keyOutputText="\u103B\u103E" android:keyEdgeFlags="left"/>
-            <Key android:keyLabel="ျ" android:keyOutputText="\u103B" />
-            <Key android:keyLabel="ော်" android:keyOutputText="\u1031\u102C\u103A" />
-            <Key android:keyLabel="ော" android:keyOutputText="\u1031\u102C"
-                 android:popupKeyboard="@xml/burmese_ny_popup_e_long_a" />
-            <Key android:keyLabel="ေ" android:keyOutputText="\u1031"
-                 android:popupKeyboard="@xml/burmese_ny_popup_long_a" />
-            <Key android:keyLabel="ဲ" android:keyOutputText="\u1032" />
-            <Key android:keyLabel="ာ" android:keyOutputText="\u102C" />
-            <Key android:keyLabel="်" android:keyOutputText="\u103A"
-                 android:popupKeyboard="@xml/keyboard_popup_template"
-                 android:popupCharacters="\u1039" />
-            <!-- stacking SHOULD be a double tap, but we'll see -->
-            <Key android:keyLabel="့်" android:keyOutputText="\u103A\u1037" android:keyEdgeFlags="right"/>
-        </Row>
-        <Row>
-            <Key android:keyLabel="ှ" android:keyOutputText="\u103E" android:keyEdgeFlags="left"/> <!--h press first -->
-            <Key android:keyLabel="ို" android:keyOutputText="\u102D\u102F" />
-            <Key android:keyLabel="ွ" android:keyOutputText="\u103D" /> <!--w press second-->
-            <Key android:keyLabel="ွာ" android:keyOutputText="\u103D\u102C" />
-            <Key android:keyLabel="ွေ" android:keyOutputText="\u103D\u1031" />
-            <Key android:keyLabel="ွဲ" android:keyOutputText="\u103D\u1032" />
-            <Key android:keyLabel="ွယ်" android:keyOutputText="\u103D\u101A\u103A" />
-            <Key android:keyLabel="ံ" android:keyOutputText="\u1036" />
-            <Key android:keyLabel="်း" android:keyOutputText="\u103A\u1038" android:keyEdgeFlags="right"/>
-        </Row>
-
+    android:keyHeight="55dp">
+    <Row>
+        <Key android:keyLabel="ွယ်" android:keyOutputText="\u103D\u101A\u103A"
+            android:keyEdgeFlags="left"/>
+        <Key android:keyLabel="ွဲ" android:keyOutputText="\u103D\u1032" />
+        <Key android:keyLabel="ို" android:keyOutputText="\u102D\u102F" />
+        <Key android:keyLabel="ွာ" android:keyOutputText="\u103D\u102C" />
+        <Key android:keyLabel="့်" android:keyOutputText="\u103A\u1037" />
+        <Key android:keyLabel="ည်" android:keyOutputText="\u100A\u103A"
+            android:popupKeyboard="@xml/burmese_ny_popup_vowel" />
+        <Key android:codes="-5" android:keyIcon="@drawable/del"
+            android:isRepeatable="true"
+            android:keyEdgeFlags="right"/>
+    </Row>
+    <Row>
+        <Key android:keyLabel="ယ်" android:keyOutputText="\u101A\u103A"
+            android:keyEdgeFlags="left"/>
+        <Key android:keyLabel="ဲ" android:keyOutputText="\u1032" />
+        <Key android:keyLabel="်" android:keyOutputText="\u103A"
+            android:popupKeyboard="@xml/keyboard_popup_template"
+            android:popupCharacters="\u1039" />
+        <!-- stacking SHOULD be a double tap, but we'll see -->
+        <Key android:keyLabel="ာ" android:keyOutputText="\u102C" />
+        android:popupKeyboard="@xml/burmese_ny_popup_long_a" />
+        <Key android:keyLabel="်း" android:keyOutputText="\u103A\u1038" />
+        <Key android:keyLabel="ိ" android:keyOutputText="\u102D" />
+        <Key android:keyLabel="ော" android:keyOutputText="\u1031\u102C"
+            android:popupKeyboard="@xml/burmese_ny_popup_e_long_a"
+            android:keyEdgeFlags="right" />
+    </Row>
+    <Row>
+        <Key android:keyLabel="ု" android:keyOutputText="\u102F"
+            android:keyEdgeFlags="left"/>
+        <Key android:keyLabel="ေ" android:keyOutputText="\u1031" />
+        <Key android:keyLabel="ျ" android:keyOutputText="\u103B" /> <!--DNS-->
+        <Key android:keyLabel="ြ" android:keyOutputText="\u103C" /> <!--DNS-->
+        <Key android:keyLabel="ှ" android:keyOutputText="\u103E" /> <!--h press first --> <!--DNS-->
+        <Key android:keyLabel="ီ" android:keyOutputText="\u102E" />
+        <Key android:keyLabel="ော်" android:keyOutputText="\u1031\u102C\u103A"
+            android:keyEdgeFlags="right"/>
+    </Row>
+    <Row>
+        <Key android:keyLabel="ူ" android:keyOutputText="\u1030"
+            android:keyEdgeFlags="left"/>
+        <Key android:keyLabel="ွေ" android:keyOutputText="\u103D\u1031" />
+        <Key android:keyLabel="ျှ" android:keyOutputText="\u103B\u103E" />
+        <Key android:keyLabel="ြှ" android:keyOutputText="\u103C\u103E" />
+        <Key android:keyLabel="ွ" android:keyOutputText="\u103D" /> <!--w press second-->
+        <Key android:keyLabel="ံ" android:keyOutputText="\u1036" />
+        <Key android:keyLabel="ုံ" android:keyOutputText="\u102F\u1036"
+            android:keyEdgeFlags="right"/>
+    </Row>
     <Row android:rowEdgeFlags="bottom" android:horizontalGap="0dp" >
         <Key android:codes="521" android:keyIcon="@drawable/globe" android:keyWidth="14%p" android:keyEdgeFlags="left"/> <!-- check default is -101 for globe -->
         <Key android:codes="502" android:keyIcon="@drawable/numbers" android:keyWidth="14%p"/>

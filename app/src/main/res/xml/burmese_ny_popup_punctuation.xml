@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="10%p"
+    android:horizontalGap="5dp"
+    android:verticalGap="0px"
+    android:keyHeight="50sp"
+    >
+    <Row>
+        <Key android:keyLabel="၊" android:keyOutputText="\u104A" /> <!-- DNS -->
+        <Key android:keyLabel="၍" android:keyOutputText="\u104D" /> <!-- DNS -->
+        <Key android:keyLabel="၏" android:keyOutputText="\u104F" /> <!-- DNS -->
+        <Key android:keyLabel="၌" android:keyOutputText="\u104C" /> <!-- DNS -->
+        <Key android:keyLabel="၎င်း" android:keyOutputText="\u104E\u1004\u103A\u1038" /> <!-- DNS -->
+    </Row>
+</Keyboard>

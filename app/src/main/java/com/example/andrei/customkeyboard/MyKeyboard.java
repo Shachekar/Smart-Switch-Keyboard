@@ -103,8 +103,10 @@ public class MyKeyboard extends InputMethodService
                 kv.setKeyboard(keyboardNumbers);
                 break;
             case 2:
+                //special characters such as ?!#)*@
                 kv.setKeyboard(keyboardSpecial);
             case 3:
+                //vowels in Burmese, anything "extra"
                 kv.setKeyboard(keyboardExtra);
                 break;
 
@@ -153,15 +155,16 @@ public class MyKeyboard extends InputMethodService
                     if (primaryCode == 505) //return to default keyboard
                         currentKeyboardLogicController.toDefaultKeyboard();
 
-                    if (primaryCode == 506) //special symbols1
-                        currentKeyboardLogicController.toSpecialKeyboard1();
+                    if (primaryCode == 506) //special symbols2
+                        currentKeyboardLogicController.toSpecialKeyboard();
 
                     if (primaryCode == 507) //special symbols1
-                        currentKeyboardLogicController.toSpecialKeyboard2();
+                        currentKeyboardLogicController.toExtraKeyboard();
 
                     if (primaryCode == 521) //change language
                         changeLanguage();
 
+                    changeKeyboard(currentKeyboardLogicController.getKeyboardIndex());
                     kv.setPreviewEnabled(false);
                     kv.setOnKeyboardActionListener(this);
 
@@ -172,17 +175,14 @@ public class MyKeyboard extends InputMethodService
                     CharSequence text;
                     CharacterProcessingReturnType thisReturn;
                     db.getInstance(getApplicationContext()).insertData_words(String.valueOf(code));
-                    if (currentLanguage == Language.burmese) {
-                        thisReturn = currentKeyboardLogicController.processText(String.valueOf(code));
-                        text = thisReturn.text;
-                    }
-                    else
-                        text = String.valueOf(code);
+                    thisReturn = currentKeyboardLogicController.processText(String.valueOf(code));
+                    text = thisReturn.text;
+
                     ic.commitText(text, 1);
                     if (primaryCode == 32)
                         currentKeyboardLogicController.handleSpace();
 
-                    changeKeyboard(currentKeyboardLogicController.getKeyboardIndex());
+
                     //else
                     //    changeKeyboard(currentKeyboardLogicController.getNextKeyboard(text));
                     //not even sure this code executes
@@ -208,6 +208,8 @@ public class MyKeyboard extends InputMethodService
     @Override
     //here it will handle actual characters typed to the line rather than controls, trying to remove language specific logic from it
     //this is called for buttons that have android:keyOutputText
+    //still not sure what the difference is, can I have two different on long press handlers, one for text,
+    //other for keycode
     public void onText(CharSequence text) {
         InputConnection ic = getCurrentInputConnection();
         CharacterProcessingReturnType thisReturn;
@@ -261,8 +263,10 @@ public class MyKeyboard extends InputMethodService
 
     }
 
-    @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        CharacterProcessingReturnType longKey;
+        longKey = currentKeyboardLogicController.handleLongPress(keyCode);
+
         return super.onKeyLongPress(keyCode, event);
     }
 

@@ -39,20 +39,24 @@ public class KeyboardLogicControllerBurmese extends KeyboardLogicController {
 
     }
 
-    public void toSpecialKeyboard1() {
+    public void toExtraKeyboard() {
+        //actual extra which in this case is vowels
         nextKeyboardNum = 3;
     }
 
-    public void toSpecialKeyboard2() {
-        nextKeyboardNum = 4;
+    public void toSpecialKeyboard() {
+        //random keys
+        nextKeyboardNum = 2;
     }
 
     public void toDefaultKeyboard() {
-        nextKeyboardNum = 1;
+
+        nextKeyboardNum = 0;
     }
 
     public void toNumKeyboard() {
-        nextKeyboardNum = 2;
+
+        nextKeyboardNum = 1;
     }
 
 

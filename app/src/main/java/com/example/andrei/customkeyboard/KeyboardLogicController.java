@@ -55,6 +55,15 @@ public abstract class KeyboardLogicController {
 
     }
 
+    public CharacterProcessingReturnType handleLongPress (int keyCode) {
+        int i;
+        if (keyCode == 0)
+            i = 1;
+
+        return nextTextOutput;
+
+    }
+
 
     //for internal use only, these are edited to modify local variables nextKeyboardNum and nextTextOutput
     public void changeToNextKeyboard(CharSequence text) {
@@ -67,9 +76,9 @@ public abstract class KeyboardLogicController {
 
     public abstract void toDefaultKeyboard();
 
-    public abstract void toSpecialKeyboard1();
+    public abstract void toExtraKeyboard();
 
-    public abstract void toSpecialKeyboard2();
+    public abstract void toSpecialKeyboard();
 
     public abstract void toNumKeyboard();
 }
