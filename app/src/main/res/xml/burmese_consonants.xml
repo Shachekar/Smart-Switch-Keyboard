@@ -9,20 +9,22 @@
     <Row>
         <Key android:keyLabel="ဇ" android:keyOutputText="\u1007"
             android:popupKeyboard="@xml/keyboard_popup_template"
-            android:popupCharacters="\u1008" android:keyEdgeFlags="left"/>
+            android:popupCharacters="\u1008" android:keyEdgeFlags="left"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
         <Key android:keyLabel="ဆ" android:keyOutputText="\u1006"/>
         <Key android:keyLabel="စ" android:keyOutputText="\u1005"/>
         <Key android:keyLabel="ယ" android:keyOutputText="\u101A" />
         <Key android:keyLabel="့" android:keyOutputText="\u1037" /> <!-- DNS -->
         <Key android:keyLabel="ည" android:keyOutputText="\u100A"
-            android:popupKeyboard="@xml/burmese_ny_popup" />
-        android:popupCharacters="\u1009 \u1009\u102C" /> <!-- DNS -->
+            android:popupKeyboard="@xml/keyboard_popup_template"
+        android:popupCharacters="\u1009\u100A" /> <!-- DNS -->
         <Key android:codes="-5" android:keyIcon="@drawable/del" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:keyLabel="ဒ" android:keyOutputText="\u1012"
             android:popupKeyboard="@xml/keyboard_popup_template"
-            android:popupCharacters="\u1013 \u100D \u100E"
+            android:popupCharacters="\u1013\u100E\u100D"
             android:keyEdgeFlags="left"/>
         <Key android:keyLabel="ထ" android:keyOutputText="\u1011"
             android:popupKeyboard="@xml/keyboard_popup_template"
@@ -43,7 +45,7 @@
     <Row>
         <Key android:keyLabel="ဂ" android:keyOutputText="\u1002"
             android:popupKeyboard="@xml/keyboard_popup_template"
-            android:popupCharacters="\u1002 \u1003"
+            android:popupCharacters="\u1002\u1003"
             android:keyEdgeFlags="left"/>
         <Key android:keyLabel="ခ" android:keyOutputText="\u1001"/>
         <Key android:keyLabel="က" android:keyOutputText="\u1000"/>
@@ -58,13 +60,13 @@
     <Row>
         <Key android:keyLabel="ဘ" android:keyOutputText="\u1018"
             android:popupKeyboard="@xml/keyboard_popup_template"
-            android:popupCharacters="\u1017 \u1018"
+            android:popupCharacters="\u1017\u1018"
             android:keyEdgeFlags="left"/>
         <Key android:keyLabel="ဖ" android:keyOutputText="\u1016" />
         <Key android:keyLabel="ပ" android:keyOutputText="\u1015" />
         <Key android:keyLabel="မ" android:keyOutputText="\u1019" />
         <Key android:keyLabel="အ" android:keyOutputText="\u1021"
-            android:popupKeyboard="@xml/burmese_ny_popup_long_vowels" />
+            android:popupKeyboard="@xml/keyboard_popup_special1"/>
         <!-- tentative --> <Key android:keyLabel="ံ" android:keyOutputText="\u1036" /> <!-- DNS -->
         <Key android:keyLabel="။" android:keyOutputText="\u104B"
         android:popupKeyboard="@xml/burmese_ny_popup_punctuation"

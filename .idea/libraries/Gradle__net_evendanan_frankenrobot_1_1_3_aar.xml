@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: net.evendanan:frankenrobot:1.1.3@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/267a99feefe7ff296647a8c953a0c212/frankenrobot-1.1.3/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/267a99feefe7ff296647a8c953a0c212/frankenrobot-1.1.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/267a99feefe7ff296647a8c953a0c212/frankenrobot-1.1.3/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b627b2150e5da192583cd6f042c2f23/frankenrobot-1.1.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b627b2150e5da192583cd6f042c2f23/frankenrobot-1.1.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4b627b2150e5da192583cd6f042c2f23/frankenrobot-1.1.3/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.evendanan/frankenrobot/1.1.3/4bc77ed8adcaea6111d5df73007a6966609f869b/frankenrobot-1.1.3-javadoc.jar!/" />

@@ -41,6 +41,8 @@ public class MyKeyboard extends InputMethodService
         burmese,
         maori
     }
+    
+
 
     @Override
     public View onCreateInputView() {
@@ -263,12 +265,13 @@ public class MyKeyboard extends InputMethodService
 
     }
 
-    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        CharacterProcessingReturnType longKey;
-        longKey = currentKeyboardLogicController.handleLongPress(keyCode);
+//    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+//        return super.onKeyLongPress(keyCode, event);
+//        CharacterProcessingReturnType longKey;
+//        longKey = currentKeyboardLogicController.handleLongPress(keyCode);
 
-        return super.onKeyLongPress(keyCode, event);
-    }
+//        return super.onKeyLongPress(keyCode, event);
+//    }
 
     @Override
     //I'm not even sure if this does anything, consider yeeting
