@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+          android:keyWidth="10%p"
+          android:horizontalGap="5dp"
+          android:verticalGap="0px"
+          android:keyHeight="50sp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+    <Row android:rowEdgeFlags="bottom" android:horizontalGap="0dp">
+        <Key android:keyLabel="ုံ" android:keyOutputText="\u1036\u102F"/>
+        <Key android:keyLabel="ိံ" android:keyOutputText="\u102D\u1036"/>
+        <Key android:keyLabel="ွံ" android:keyOutputText="\u1036\u103D"/>
+        android:keyEdgeFlags="right"/>
+    </Row>
+</Keyboard>

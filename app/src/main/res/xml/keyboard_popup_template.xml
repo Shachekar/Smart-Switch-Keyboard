@@ -4,5 +4,7 @@
           android:horizontalGap="5dp"
           android:verticalGap="0px"
           android:keyHeight="50sp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     >
 </Keyboard>

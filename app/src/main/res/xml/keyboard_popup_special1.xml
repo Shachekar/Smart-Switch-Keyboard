@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+          android:keyWidth="10%p"
+          android:horizontalGap="5dp"
+          android:verticalGap="0px"
+          android:keyHeight="50sp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+    <Row android:rowEdgeFlags="bottom" android:horizontalGap="0dp">
+        <Key android:keyLabel="ဣ" android:keyOutputText="\u1023"/>
+        <Key android:keyLabel="ဤ" android:keyOutputText="\u1024"/>
+        <Key android:keyLabel="ဥ" android:keyOutputText="\u1025"/>
+        <Key android:keyLabel="ဦ" android:keyOutputText="\u1026"/>
+        <Key android:keyLabel="ဦး" android:keyOutputText="\u1026\u108F"/>
+        <Key android:keyLabel="ဧ" android:keyOutputText="\u1027"/>
+        <Key android:keyLabel="ဩ" android:keyOutputText="\u1029"/>
+        <Key android:keyLabel="ဪ" android:keyOutputText="\u102A"/>
+        android:keyEdgeFlags="right"/>
+    </Row>
+</Keyboard>
